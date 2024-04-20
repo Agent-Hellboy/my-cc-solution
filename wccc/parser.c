@@ -12,10 +12,11 @@ void counts(FILE *file, struct WcInfo *wc_info) {
         // Process the character (count characters)
         wc_info->char_count++;
 
-        // Check if the current character is part of a word
+        // Check if newline is found
         if (ch == 10){
             wc_info->line_count+=1;
         }
+        // Check if the current character is part of a word
         if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
             // If not already inside a word, increment word count and set flag
             if (!in_word) {
@@ -31,7 +32,6 @@ void counts(FILE *file, struct WcInfo *wc_info) {
 
     // Check for errors during file reading
     if (ferror(file)) {
-        // Handle the error
         fprintf(stderr, "Error reading file\n");
     }
 }

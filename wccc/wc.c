@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
     }
 
     struct WcInfo wc_info = readFileContent(ftr);
-    while ((opt = getopt(argc, argv, "l:w:c:b")) != -1) {
+    while ((opt = getopt(argc, argv, "l:w:c:m")) != -1) {
         switch (opt) {
             case 'l':
                 printf("\t %d \t %s", wc_info.line_count+1, filename);
@@ -32,8 +32,8 @@ int main(int argc, char *argv[]) {
             case 'c':
                 printf("\t %d \t %s", wc_info.char_count, filename);
                 break;
-            case 'b':
-                printf("\t %d \t %s",wc_info.byte_size, filename);
+            case 'm':
+                printf("\t %d \t %d \t %d %s",wc_info.line_count,wc_info.word_count,wc_info.char_count, filename);
                 break;
         }
     }

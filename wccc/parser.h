@@ -5,7 +5,6 @@
 
 
 struct WcInfo {
-    int byte_size;
     int line_count;
     int word_count;
     int char_count;

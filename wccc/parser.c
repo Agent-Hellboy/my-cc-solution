@@ -41,7 +41,6 @@ void counts(FILE *file, struct WcInfo *wc_info) {
 
 struct WcInfo readFileContent(FILE *file) {
     struct WcInfo wc_info;
-    wc_info.byte_size = 0;
     wc_info.char_count = 0;
     wc_info.word_count = 0;
     wc_info.line_count = 0;
@@ -49,23 +48,7 @@ struct WcInfo readFileContent(FILE *file) {
         fprintf(stderr, "Error: File pointer is NULL\n");
         return wc_info;
     }
-
-    fseek(file, 0, SEEK_END); // Move the file pointer to the end
-    long fileSize = ftell(file); // Get the file size
-
-    if (fileSize == -1) {
-        perror("Error getting file size");
-        fclose(file);
-        return wc_info;
-    }
-    fseek(file, 0, SEEK_SET); // Move the file pointer back to the beginning
     counts(file,&wc_info);
 
-    if (fileSize <= 0) {
-        fprintf(stderr, "Error: File is empty or cannot determine file size\n");
-        return wc_info;
-    }
-
-    wc_info.byte_size = fileSize;
     return wc_info;
 }

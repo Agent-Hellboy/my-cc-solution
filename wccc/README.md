@@ -10,10 +10,10 @@ To use the Word Count Tool, follow these steps:
 
 1. Clone or download the repository containing the Word Count Tool source code.
 
-2. Compile the source code using your preferred compiler. For example, if you're using GCC, you can compile it with the following command:
+2. Compile the source code using make
 
     ```bash
-    gcc -o wccc wccc.c
+    make
     ```
 
 3. Run the compiled executable with the desired options and the path to the text file you want to analyze. Available options include:

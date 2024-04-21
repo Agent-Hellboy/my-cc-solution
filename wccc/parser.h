@@ -10,7 +10,6 @@ struct WcInfo {
     int char_count;
 };
 
-void counts(FILE *file, struct WcInfo *wc_info);
 struct WcInfo readFileContent(FILE *file);
 
 #endif /* PARSER_H */

@@ -6,18 +6,25 @@
 
 int main(int argc, char *argv[]) {
     int opt;
-    char *filename;
-    if (optind < argc) {
-        // At least one non-option argument present
-        filename = argv[optind+1]; 
-    } else {
-        fprintf(stderr, "Missing file argument.\n");
-        return 1;
+    // Check if a non-option argument (file name) is present
+    if (argc < 2) {
+        fprintf(stderr, "Usage: %s [-l|-c|-w|-m] filename\n", argv[0]);
+        exit(EXIT_FAILURE);
     }
+
+    if (argc < 3) {
+        perror("Error: Missing file argument.");
+        exit(EXIT_FAILURE);
+    }
+
+    char *filename;
+    // Extract the file name
+    filename = argv[2];
+
     FILE *ftr = fopen(filename,"r");
     if (ftr == NULL) {
-        fprintf(stderr, "Error: Unable to open file\n");
-        return 1;
+        perror("Error: Unable to open file");
+        exit(EXIT_FAILURE);
     }
 
     struct WcInfo wc_info = readFileContent(ftr);
@@ -37,6 +44,7 @@ int main(int argc, char *argv[]) {
                 break;
         }
     }
+
     fclose(ftr);
     return 0;
 }

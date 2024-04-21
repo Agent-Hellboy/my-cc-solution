@@ -50,9 +50,10 @@ Here are some examples of using the Word Count Tool with different options:
 ##  TODO 
 
 - [ ] Formate code using indent 
-- [ ] Improve Error reporting 
+- [*] Improve Error reporting 
 - [ ] Write test , maybe try to use wc test suite , use unity for unittest  
 - [ ] Try to package this 
+- [ ] Try to use optind
 
 ## License
 

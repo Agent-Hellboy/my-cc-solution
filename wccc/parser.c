@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-void counts(FILE *file, struct WcInfo *wc_info) {
+static void counts(FILE *file, struct WcInfo *wc_info) {
     int ch; // Variable to store each character read from the file
     bool in_word = false; // Flag to track if currently inside a word
 
@@ -32,7 +32,7 @@ void counts(FILE *file, struct WcInfo *wc_info) {
 
     // Check for errors during file reading
     if (ferror(file)) {
-        fprintf(stderr, "Error reading file\n");
+        perror("Error reading file");
     }
 }
 
